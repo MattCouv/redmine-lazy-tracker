@@ -1,0 +1,13 @@
+{
+    "name": "matthieu/redmine-lazy-tracker",
+    "authors": [
+        {
+            "name": "MattCouv",
+            "email": "matth.couvreur@gmail.com"
+        }
+    ],
+    "require": {
+        "mikecao/flight": "^1.3",
+        "nategood/httpful": "^0.2.20"
+    }
+}
