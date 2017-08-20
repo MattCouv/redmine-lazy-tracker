@@ -6,12 +6,12 @@ import {
   Redirect
 } from "react-router-dom";
 import { Provider } from "react-redux";
+import Redmine from "../api/Redmine";
 
 import NotFound from "../routes/NotFound";
 import Login from "../routes/Login";
-import Issues from "../routes/Issues";
+import App from "./App";
 
-let isAuthenticated = true;
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) =>
   <Route
     {...rest}
@@ -21,18 +21,20 @@ const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) =>
 
 const Root = ({ store }) =>
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <PrivateRoute
-          exact
-          path="/"
-          isAuthenticated={store.getState().isLogged}
-          component={Issues}
-        />
-        <Route path="/login" component={Login} />
-        <Route component={NotFound} />
-      </Switch>
-    </Router>
+    <Redmine store={store}>
+      <Router>
+        <Switch>
+          <PrivateRoute
+            exact
+            path="/"
+            isAuthenticated={store.getState().user}
+            component={App}
+          />
+          <Route path="/login" component={Login} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
+    </Redmine>
   </Provider>;
 
 export default Root;

@@ -1,5 +1,9 @@
 @import "normalize.scss";
-* {
-    box-sizing: border-box;
-}
+@import "variables.scss";
 @import "app.scss";
+@import "button.scss";
+@import "login.scss";
+@import "textField.scss";
+@import "searchinput.scss";
+@import "selectfilter.scss";
+@import "issues.scss";

@@ -4,7 +4,7 @@ const axios = require("axios");
 const ApiGet = (req, res) => {
   let { credentials } = req;
   axios
-    .get(req.path + ".json", {
+    .get(req.path, {
       baseURL: credentials.baseURL || "",
       auth: {
         username: credentials.username || "",
@@ -18,7 +18,7 @@ const ApiGet = (req, res) => {
         res.json({ error: "bad credentials" });
       }
     })
-    .catch(error => res.status(500).send("erreor"));
+    .catch(error => res.status(500).send("error"));
 };
 
 const authChecker = (req, res, next) => {
@@ -51,8 +51,6 @@ const ApiRouter = express.Router();
 
 ApiRouter.use(authChecker);
 
-ApiRouter.route("/users/current").get(ApiGet);
-
-ApiRouter.route("/issues").get(ApiGet);
+ApiRouter.route("/*").get(ApiGet);
 
 module.exports = ApiRouter;

@@ -1,4 +1,7 @@
 import { combineReducers } from "redux";
+import { user } from "./user";
+import { projects } from "./projects";
+import { issues } from "./issues";
 
 const credentials = (
   state = {
@@ -22,6 +25,9 @@ const credentials = (
 };
 
 const RootReducer = combineReducers({
-  credentials
+  credentials,
+  user,
+  projects,
+  issues
 });
 export default RootReducer;

@@ -1,0 +1,13 @@
+.login-page {
+  max-width: 300px;
+  margin: 0 auto;
+  .title {
+    color: $primary-purple;
+    font-size: $big-font-size;
+  }
+  .login-form {
+    .button {
+      width: 100%;
+    }
+  }
+}

@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 const Issue = ({ issue }) =>
   <li id={"issue_" + issue.id} className="issue">
     <div className="">
@@ -14,6 +16,20 @@ const Issue = ({ issue }) =>
       </div>
     </div>
   </li>;
+
+Issue.propTypes = {
+  issue: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    status: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    subject: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    updated_on: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default Issue;
 
