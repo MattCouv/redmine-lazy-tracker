@@ -7,3 +7,12 @@ export const projects = (state = [], action) => {
       return state;
   }
 };
+
+export const currentProject = (state = 0, action) => {
+  switch (action.type) {
+    case "SET_CURRENT_PROJECT":
+      return action.project;
+    default:
+      return state;
+  }
+};

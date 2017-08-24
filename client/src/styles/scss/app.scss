@@ -14,41 +14,14 @@ body {
   font-size: 1.2rem;
   line-height: 2rem;
 }
-
-.navbar {
-  background-color: $primary_purple;
+.app-body {
+  margin-top: 50px;
+  max-height: calc(100vh - 50px);
   position: fixed;
-  height: 5rem;
-  top: 0;
-  width: 100%;
+  overflow-y: scroll;
+  width: 100vw;
+}
+.MenuRight {
   display: flex;
-  .navbar_menu {
-    margin: 0;
-    align-items: center;
-    flex-wrap: nowrap;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    list-style: none;
-
-    .flex_item {
-      flex: 0 1 auto;
-    }
-  }
-  .navbar-mmenu-toggle {
-    background-color: $primary_purple;
-    border: none;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    height: 60px;
-    width: 60px;
-    margin: 0;
-    cursor: pointer;
-  }
-  .searchInput_form {
-  }
+  align-items: center;
 }

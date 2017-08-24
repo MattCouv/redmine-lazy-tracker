@@ -5,36 +5,44 @@ class SelectFilter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: props.listItems || [],
-      showList: false
+      items: this.props.listItems
     };
   }
 
+  onClick = e => {
+    this.props.setCurrentProject(e.target.innerText);
+  };
+
   filterItems = e => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
     let items = this.props.listItems;
-    let showList = false;
     if (value !== "") {
-      items = this.state.items.filter(item => {
+      items = this.props.listItems.filter(item => {
         return item.name.toLowerCase().indexOf(value) !== -1;
       });
-      showList = true;
     }
-    this.setState({ items, showList });
+    this.setState({ items });
   };
   render() {
-    let { items, showList } = this.state;
+    let { items } = this.state;
     const style = {
-      display: showList ? "block" : "none"
+      display: this.props.open ? "block" : "none"
     };
     return (
-      <div className="select_filter">
+      <div className="select_filter" style={style}>
         <SearchInput onChange={this.filterItems} />
-        <div className="select_list closed" style={style}>
+        <div className="select_list closed">
           <ul>
             {items.map((item, index) => {
               return (
-                <li key={index}>
+                <li
+                  key={index}
+                  className={item.parent !== undefined ? "child" : ""}
+                  onClick={() => {
+                    this.props.setCurrentProject(item.id);
+                    this.props.toggle();
+                  }}
+                >
                   {item.name}
                 </li>
               );

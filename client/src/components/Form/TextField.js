@@ -1,7 +1,6 @@
 import React from "react";
 
-const TextField = ({ onChange, input }) => {
-  const { label, name, value, placeholder, type } = input;
+const TextField = ({ onChange, label, name, value, type, placeholder }) => {
   return (
     <div className="textField">
       <label className="textField_label" htmlFor={name}>
@@ -10,9 +9,9 @@ const TextField = ({ onChange, input }) => {
       <input
         id={name}
         type={type || "text"}
-        placeholder={placeholder || label}
         name={name}
-        value={value}
+        placeholder={placeholder}
+        value={value || ""}
         className="textField_input"
         onChange={onChange}
       />

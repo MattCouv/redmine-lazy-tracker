@@ -1,42 +1,58 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 import NavBar from "../components/NavBar";
-import { setIssues } from "../actions/issues";
 import IssuesContainer from "../routes/IssuesContainer";
+import PropTypes from "prop-types";
+import { getProjects } from "../api/Redmine";
+import { getCurrentProject } from "../actions/projects";
+import { logoutUser } from "../actions/authActions";
 
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.context.store.dispatch(this.getIssues());
+  componentDidMount() {
+    this.props.getProjects();
   }
-  getIssues = () => {
-    const { redmine } = this.context;
-    return dispatch => {
-      return redmine.getIssues().then(issues => {
-        console.log(issues);
-        dispatch(setIssues(issues));
-      });
-    };
-  };
   render() {
+    const currentProject = getCurrentProject(
+      this.props.projects,
+      this.props.currentProject
+    );
+
+    const projectName = currentProject.name || "Aucun Projet";
+
     return (
       <div className="app-containers">
-        <NavBar />
-        <div className="app-body">
-          <Switch>
-            <Route exact path="/" component={IssuesContainer} />
-            <Route path="/issues" component={IssuesContainer} />
-          </Switch>
-        </div>
+        <NavBar
+          projects={this.props.projects}
+          projectName={projectName}
+          setCurrentProject={this.props.setCurrentProject}
+          logout={this.props.logoutUser}
+          baseURL={this.props.baseURL}
+        />
+        <div className="app-body">coucou</div>
       </div>
     );
   }
 }
-
-App.contextTypes = {
-  store: PropTypes.object,
-  redmine: PropTypes.object
+const mapStateToProps = state => {
+  return {
+    projects: state.projects,
+    currentProject: state.currentProject,
+    baseURL: state.auth.credentials.baseURL
+  };
 };
 
-export default App;
+const setCurrentProject = id => {
+  return dispatch => {
+    dispatch({
+      type: "SET_CURRENT_PROJECT",
+      project: id
+    });
+  };
+};
+
+export default connect(mapStateToProps, {
+  getProjects,
+  setCurrentProject,
+  logoutUser
+})(App);

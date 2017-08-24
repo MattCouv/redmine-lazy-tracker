@@ -4,7 +4,7 @@ const axios = require("axios");
 const ApiGet = (req, res) => {
   let { credentials } = req;
   axios
-    .get(req.path, {
+    .get(req._parsedUrl.path, {
       baseURL: credentials.baseURL || "",
       auth: {
         username: credentials.username || "",
@@ -18,7 +18,7 @@ const ApiGet = (req, res) => {
         res.json({ error: "bad credentials" });
       }
     })
-    .catch(error => res.status(500).send("error"));
+    .catch(error => res.status(500).json({ error: "Invalid request" }));
 };
 
 const authChecker = (req, res, next) => {

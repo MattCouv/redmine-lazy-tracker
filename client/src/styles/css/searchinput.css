@@ -1,6 +1,5 @@
 .searchInput_form {
   position: relative;
-  display: inline-block;
   max-width: 250px; }
   .searchInput_form .searchInput_icon {
     position: absolute;
