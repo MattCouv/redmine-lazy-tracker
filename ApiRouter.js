@@ -4,7 +4,7 @@ const axios = require("axios");
 const ApiGet = (req, res) => {
   let { credentials } = req;
   axios
-    .get(req._parsedUrl.path, {
+    .get(req.url, {
       baseURL: credentials.baseURL || "",
       auth: {
         username: credentials.username || "",

@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
-import Root from "./routes/Root";
-import StoreConfigurator from "./components/store";
+import Root from "./routes/";
+import StoreConfigurator from "./modules/store";
 import throttle from "lodash/throttle";
-import { saveState } from "./components/LocalStorage";
+import { saveState } from "./modules/LocalStorage";
 import registerServiceWorker from "./registerServiceWorker";
-import { setAuthorization } from "./api/Redmine";
+import { setAuthorization } from "./modules/appActions";
 
 import "./styles/css/index.css";
 const store = StoreConfigurator();

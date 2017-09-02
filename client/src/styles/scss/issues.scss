@@ -4,3 +4,119 @@
   margin-top: 5px;
   border-bottom: 1px solid $grey;
 }
+.status-box {
+  padding: 0 10px;
+  margin-top: 4px;
+  border-radius: 3px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 25px;
+}
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.timeline-comment-avatar {
+  float: left;
+  margin-left: -60px;
+  border-radius: 3px;
+}
+.issue-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  color: #2e2e2e;
+}
+.issue-description {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d1d5da;
+  padding: 20px 0;
+  h1 {
+    margin: 0;
+  }
+  .description {
+    margin-top: 10px;
+  }
+}
+.issue-content {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.discussion-timeline::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 79px;
+  z-index: -1;
+  display: block;
+  width: 2px;
+  content: "";
+  background-color: #e6ebf1;
+}
+.timeline-comment-wrapper {
+  position: relative;
+  padding-left: 60px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  .timeline-comment-header-text {
+    margin: 0;
+    max-width: 78%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: normal;
+  }
+  .timeline-comment {
+    position: relative;
+    background-color: #fff;
+    // border: 1px solid #d1d5da;
+    border-radius: 3px;
+    .timeline-comment-header {
+      padding-right: 15px;
+      padding-left: 15px;
+      color: #586069;
+      background-color: #f6f8fa;
+      // border-bottom: 1px solid #d1d5da;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+    &::before {
+      border-width: 8px;
+      border-right-color: #d1d5da;
+    }
+    &::after {
+      margin-top: 1px;
+      margin-left: 2px;
+      border-width: 7px;
+      border-right-color: #f6f8fa;
+    }
+    &::before {
+      position: absolute;
+      top: 11px;
+      right: 100%;
+      left: -16px;
+      display: block;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      content: " ";
+      border-color: transparent;
+      border-style: solid solid outset;
+    }
+  }
+  .comment-body {
+    padding: 10px;
+  }
+}

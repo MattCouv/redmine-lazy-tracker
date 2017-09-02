@@ -4,3 +4,9 @@ export const setIssues = issues => {
     issues
   };
 };
+export const setIssue = issue => {
+  return {
+    type: "SET_ISSUE",
+    issue
+  };
+};

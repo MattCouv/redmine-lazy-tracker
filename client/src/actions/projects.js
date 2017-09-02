@@ -5,15 +5,18 @@ export const setProjects = projects => {
   };
 };
 
-export const getCurrentProject = (projects, projectID) => {
-  if (projectID === 0) {
-    return projects[0] || { name: "Auccun projet" };
-  }
-  const currentProject = projects.filter(project => {
-    return project.id == projectID;
-  });
-  if (currentProject === undefined) {
-    return { name: "Auccun projet" };
-  }
-  return currentProject[0];
+export const setProjectsById = projects => {
+  return {
+    type: "SET_PROJECTS_BY_ID",
+    projects
+  };
+};
+
+export const setCurrentProject = id => {
+  return dispatch => {
+    dispatch({
+      type: "SET_CURRENT_PROJECT",
+      project: id
+    });
+  };
 };

@@ -399,11 +399,31 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #faf9fa;
-  color: #ffffff;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 1.2rem;
   line-height: 2rem; }
+
+.timer h3 {
+  text-align: center; }
+
+.timer .timerMenu button {
+  padding: 0; }
+
+.loading-screen .modal {
+  position: fixed;
+  z-index: 4;
+  background-color: #ccc;
+  opacity: 0.3;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vw; }
+
+.loading-screen .spinner {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .app-body {
   margin-top: 50px;
@@ -465,19 +485,6 @@ body {
 .searchInput_form {
   position: relative;
   max-width: 250px; }
-  .searchInput_form .searchInput_icon {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 29px;
-    width: 29px;
-    padding: 5px;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-    z-index: 3; }
-    .searchInput_form .searchInput_icon svg {
-      width: 100%; }
   .searchInput_form .searchInput_input {
     box-shadow: none;
     box-shadow: inset 0 0 0 1px #dad8de, 0 0 0 transparent;
@@ -504,29 +511,136 @@ body {
 
 .select_filter {
   position: fixed;
-  top: 50px;
-  left: 10px;
+  top: 55px;
+  left: 5%;
   position: fixed;
-  top: 50px;
-  left: 10px;
-  background-color: white;
+  background-color: #fafafa;
   z-index: 10; }
   .select_filter .select_list {
-    background-color: white;
+    background-color: #fafafa;
     color: #4e4d5c;
     max-width: 250px;
-    padding: 5px;
-    margin-top: 5px;
     max-height: 80vh;
     overflow-y: scroll; }
     .select_filter .select_list ul {
+      margin: 0;
       list-style: none;
-      padding-left: 10px; }
-      .select_filter .select_list ul .child {
-        padding-left: 10px; }
+      padding: 0; }
+      .select_filter .select_list ul li {
+        cursor: pointer;
+        padding: 0 5px; }
+        .select_filter .select_list ul li:hover {
+          background-color: #e0e0e0; }
+        .select_filter .select_list ul li.child {
+          padding-left: 20px; }
 
 .issue {
   color: #4e4d5c;
   padding-bottom: 10px;
   margin-top: 5px;
   border-bottom: 1px solid #dad8de; }
+
+.status-box {
+  padding: 0 10px;
+  margin-top: 4px;
+  border-radius: 3px;
+  display: block;
+  float: left;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 25px; }
+
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-right: 5px; }
+
+.timeline-comment-avatar {
+  float: left;
+  margin-left: -60px;
+  border-radius: 3px; }
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  color: #2e2e2e; }
+
+.issue-description {
+  background-color: #ffffff;
+  border-bottom: 1px solid #d1d5da;
+  padding: 20px 0; }
+  .issue-description h1 {
+    margin: 0; }
+  .issue-description .description {
+    margin-top: 10px; }
+
+.issue-content {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 10px; }
+
+.discussion-timeline::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 79px;
+  z-index: -1;
+  display: block;
+  width: 2px;
+  content: "";
+  background-color: #e6ebf1; }
+
+.timeline-comment-wrapper {
+  position: relative;
+  padding-left: 60px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-top: 2px solid #fff;
+  border-bottom: 2px solid #fff; }
+  .timeline-comment-wrapper .timeline-comment-header-text {
+    margin: 0;
+    max-width: 78%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: normal; }
+  .timeline-comment-wrapper .timeline-comment {
+    position: relative;
+    background-color: #fff;
+    border-radius: 3px; }
+    .timeline-comment-wrapper .timeline-comment .timeline-comment-header {
+      padding-right: 15px;
+      padding-left: 15px;
+      color: #586069;
+      background-color: #f6f8fa;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px; }
+    .timeline-comment-wrapper .timeline-comment::before {
+      border-width: 8px;
+      border-right-color: #d1d5da; }
+    .timeline-comment-wrapper .timeline-comment::after {
+      margin-top: 1px;
+      margin-left: 2px;
+      border-width: 7px;
+      border-right-color: #f6f8fa; }
+    .timeline-comment-wrapper .timeline-comment::before {
+      position: absolute;
+      top: 11px;
+      right: 100%;
+      left: -16px;
+      display: block;
+      width: 0;
+      height: 0;
+      pointer-events: none;
+      content: " ";
+      border-color: transparent;
+      border-style: solid solid outset; }
+  .timeline-comment-wrapper .comment-body {
+    padding: 10px; }
